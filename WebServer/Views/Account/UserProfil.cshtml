@@ -1,0 +1,114 @@
+﻿@model WebServer.Models.User
+@{
+    ViewData["Title"] = "Профиль";
+    string ButtonEnable,sex="";
+
+    if (Model.Role == Role.Guest)
+        ButtonEnable = "display:none;";
+    else
+        ButtonEnable = "";
+    if (Model.Sex == 1)
+        sex = "fa-male";
+    if (Model.Sex == 2)
+        sex = "fa-female";
+}
+<link rel="stylesheet" href="~/css/Account/UserProfil.css" />
+    <div class="container" style="margin-top: 10px;">
+        <div class="row main">
+            <div class="col-auto border">
+                <img src="@Model.Image" id="UserImg" >
+            </div>
+            <div class="col-auto">
+                <div class="row" id="MainBox" >
+                    <div class="col-auto" style=" margin-left: 10px; ">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-auto">  <label>Login: @Model.Email</label></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">  <label>Имя :@Model.Name</label></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">   <label>Дата регистрации: @Model.RegisterData</label></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2 fa fa-gears fa-2x editbtn" style="@ButtonEnable"> </div>
+                            <a href="/Messages/Message?actionstate=2&Email=@Model.Email" class="col-auto" style="color:white; @ButtonEnable">Написать</a>
+                        </div>
+
+                    </div>
+                    <div class="col-auto">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-auto">  Пол: <div class="fa @sex fa-2x"></div> </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">  <label>День рождения: @Model.BD</label></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">  <label>Коментарии: @VirtualBD.Comments.FindAll(x => x.Creator == Model.Email).Count</label></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row edit" style="display:none;">
+            <div class="col-auto border">
+                <img src="@Model.Image" id="UserImg">
+            </div>
+            <div class="col-auto" id="MainBox" >
+                <div class="row">
+                    <div class="col-auto">
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-2">  <label>Login:</label></div>
+                            <div class="col">  <input type="email" id="Login"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">  <label>Имя:</label></div>
+                            <div class="col">  <input type="text" id="Name"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">   <label>Пароль:</label></div>
+                            <div class="col">  <input type="password" id="Password"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <i class="fa fa-image fa-2x"></i>
+                                <input id="choos" type="file" multiple accept="image/*" style=" opacity: 0;transform: translate(205px,-1000px);" />
+                                <div class="progress" id="pBar">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2 save fa fa-check fa-2x"> </div>
+                                <div class="col-2 back fa fa-times-circle fa-2x"> </div>
+
+                            </div>
+                        <div class="col text-right"> <a style="color:red;" href="/Account/deleteUser?name=@Model.Email">Удалить</a></div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-5 text-center">   <label>Ваш пол:</label></div>
+                            <button class="col-auto fa fa-male fa-2x sex" style="margin-left:16px; background-color:gray;" id="sex1"></button>  <button class="col-auto fa fa-female fa-2x sex" style="margin-left:10px;background-color:gray;" id="sex2"></button>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-auto">   <label>День рождения:</label></div>
+                            <div class="col">  <input type="text" id="BD"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="MyLoads" data-src="@Model.Email" src="~/js/Account/UserProfil.js">
+    </script>

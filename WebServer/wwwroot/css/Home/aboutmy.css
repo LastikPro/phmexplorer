@@ -1,0 +1,187 @@
+﻿
+.Skill_Ellement {
+    margin-left: 5px;
+    margin-top: 30px;
+    transform: translateX(-25px);
+}
+
+.ContactIcon {
+    margin-top: 20px;
+    margin-left: 10px;
+    color: blueviolet;
+    transform: scale(1.4);
+}
+
+.Header_About_Text {
+    position: fixed;
+    transform: translate(-30px,8px);
+}
+
+.Header_About_Img {
+    transform: translate(30px,0px);
+}
+
+.Header_Ellement {
+    height: 50px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: initial;
+    border: 1px solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 3px 4px 8px 1px rgba(0,0,0,0.5);
+    margin-top: 12px;
+    animation-name: Header_About_Slide_Right;
+    animation-duration: 0.7s;
+    width: 200px;
+}
+
+    .Header_Ellement:hover {
+        animation-name: Header_About_Slide_Left;
+        animation-duration: 0.9s;
+        width: 400px;
+        cursor: pointer;
+    }
+
+.Skill_Ellement_Sub {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 21px;
+}
+
+.Project_Img {
+    transform: translateX(-10px);
+}
+
+
+#Start_Body {
+    position: fixed;
+    font-size: 35px;
+    font-style: normal;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#Skill_Body {
+    background: linear-gradient(to left, #CDE400,#98E43A, #1BE43C);
+    position: fixed;
+    transform: translateX(1180px);
+    width: 1180px;
+    height: 582px;
+}
+
+#Project_Body {
+    background: linear-gradient(to left, #3544E2,#9A47E2, #DB28E4);
+    position: fixed;
+    transform: translateX(1180px);
+    width: 1180px;
+    height: 582px;
+}
+
+#About_Body {
+    background: linear-gradient(to left, #E2BB0D,#E28D54, #E23B12);
+    position: fixed;
+    transform: translateX(1180px);
+    width: 1180px;
+    height: 582px;
+}
+
+#Line_Horizontal {
+    width: 355px;
+    background-color: black;
+    height: 1px;
+    transform: translateX(-15px);
+}
+
+#HeaderHead {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 40px;
+    transform: translateX(-50px);
+}
+
+#HeaderContact {
+    font-style: initial;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: blueviolet;
+    transform: rotate(90deg);
+    margin-top: 90px;
+}
+
+#EndLine {
+    background-color: #E1E43A;
+    height: 4px;
+    width: 100%;
+    transform:  translate(-17px,135px);
+}
+
+#HeadPhoto {
+    position: absolute;
+    transform: scale(0.5) translate(-590px,-200px);
+}
+
+#Project_Header {
+    display: flex;
+    justify-content: center
+}
+
+#Project_1_Text {
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#Project_2_Text {
+    margin-top: 15px;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#Body {
+    transform: translate(50%,100px);
+    position: absolute;
+    overflow: hidden;
+    width: 1180px;
+    height: 584px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px 1px rgba(0,0,0,0.5);
+}
+
+@keyframes Slider_Right {
+    from {
+        transform: translateX(1180px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes Slider_Left {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(1180px);
+    }
+}
+
+@keyframes Header_About_Slide_Left {
+    from {
+        width: 200px;
+    }
+
+    to {
+        width: 400px;
+    }
+}
+
+@keyframes Header_About_Slide_Right {
+    from {
+        width: 400px;
+    }
+
+    to {
+        width: 200px;
+    }
+}

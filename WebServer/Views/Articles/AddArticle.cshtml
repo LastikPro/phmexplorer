@@ -1,0 +1,95 @@
+﻿@{ 
+    ViewData["Title"] = "Добавить статью";
+}
+<link rel="stylesheet" href="~/css/Article/AddArticle.css" />
+    <div class="container">
+        <div class="row">
+            <div class="col" style="background-color: bisque;">
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-2">
+                        <label>Главление</label>
+                    </div>
+                    <div class="col-auto">
+                        <input id="header">
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-2" style="margin-top: 15px;">
+                        <label>Картинка</label>
+                    </div>
+
+                    <div class="col-auto" >
+                        <span class="fa fa-download"style="margin-right:30px;"></span>
+                        <input id="Img" type="file" multiple accept="image/*" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2" style="margin-top: 15px;">
+                        <label>Тип Здания</label>
+                    </div>
+                    <div class="dropdown col-auto">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Кнопка выпадающего списка
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-item border-bottom" id="Market">
+                                <txt >Продуктовые супермаркеты</txt>
+                            </div>
+
+                            <div class="dropdown-item border-bottom" id="Shop">
+                                <txt >Магазины</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="Restaurants">
+                                <txt >Рестораны</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="Cafe">
+                                <txt >Кафе</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="EducationalInstitutions">
+                                <txt >Образовательные учреждения</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="ConstructionShops">
+                                <txt >Строительные магазины</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="Museums">
+                                <txt >Музеи</txt>
+                            </div>
+                            <div class="dropdown-item border-bottom" id="SityBilding">
+                                <txt >Городская инфраструктура</txt>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2" style="margin-top: 15px;">
+                        <label>Адрес</label>
+
+                    </div>
+                    <div class="col-auto">
+                        <input id="Adress">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label>Описание</label>
+
+                    </div>
+                    <div class="col-10" style="width:100%;">
+                        <textarea ></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn send btn-warning">Создать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/Article/AddArticle.js"></script>

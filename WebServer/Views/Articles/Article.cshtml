@@ -1,0 +1,145 @@
+﻿@model WebServer.Models.ArticleModel
+@{
+
+    ViewData["Title"] = Model.Header;
+    int CommentCounter = VirtualBD.Comments.FindAll(x => x.articleID == Model.ID).Count;
+    string UserHref;
+
+    if (Model.Creator != null)
+        UserHref = "/Account/UserProfil?name=" + Model.Creator;
+    else
+        UserHref = "/Home/Error";
+    var Text = new Microsoft.AspNetCore.Html.HtmlString(Model.Text);
+    var LastArticle1 = VirtualBD.Articles[VirtualBD.Articles.Count - 1];
+    var LastArticle2 = VirtualBD.Articles[VirtualBD.Articles.Count - 2];
+    var LastArticle3 = VirtualBD.Articles[VirtualBD.Articles.Count - 3];
+}
+<link rel="stylesheet" href="~/css/Article/Article.css" />
+<div class="container border">
+    <div class="row">
+        <div class="col">
+            <img src="@VirtualBD.Users.Find(x=>x.Email==Model.Creator).Image" style="max-width:30px;">
+            <a href="@UserHref">  <txt> @Model.Name</txt> </a>
+            <txt style="margin-left: 15px;">@Model.Time</txt>
+            <txt class="fa fa-comments Counter" style="color: blue;"> @CommentCounter</txt>
+            <txt class="fa fa-eye " style=" color:green;">@Model.Viev</txt>
+            <txt class="ArticleID" id="@Model.ID">ID:@Model.ID</txt>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" style="font-size: 40px;">
+            <b>@Model.Header</b>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 40px;">
+        <div class="col">
+            <img src="@Model.Image" style="max-width:1020px;">
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-10 Article-Text">
+            @Text
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col " style="background-color: gray; margin-left: 10px; margin-right: 10px;">
+            <div class="row">
+                <div class="col-2">
+                    <img class="img-thumbnail" src="@LastArticle1.ImageMin">
+                </div>
+                <div class="col-2" style="font-size: 13px;margin-top: 30px;">
+                    <div class="row"><a style="color:black;" href="/Articles/Article?id=@LastArticle1.ID"><b>@LastArticle1.Header</b></a></div>
+                    <div class="row " style="margin-top:5px">
+                        <div class="col-auto" style="background-color: slateblue;"><a style="color:black;" href="/Account/UserProfil?name=@LastArticle1.Creator">@LastArticle1.Name</a></div>
+                        <div class="col-auto" id="Time" style="background-color: green;">@LastArticle1.Time</div>
+                        <div class="col-auto" style="background-color: red; ">@LastArticle1.Viev</div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <img class="img-thumbnail" src="@LastArticle2.ImageMin">
+                </div>
+                <div class="col-2" style="font-size: 13px;margin-top: 30px;">
+                    <div class="row"><a style="color:black;" href="/Articles/Article?id=@LastArticle2.ID"><b>@LastArticle2.Header</b></a></div>
+                    <div class="row " style="margin-top:5px">
+                        <div class="col-auto" style="background-color: slateblue;"><a style="color:black;" href="/Account/UserProfil?name=@LastArticle2.Creator">@LastArticle2.Name</a></div>
+                        <div class="col-auto" id="Time" style="background-color: green;">@LastArticle2.Time</div>
+                        <div class="col-auto" style="background-color: red; ">@LastArticle2.Viev</div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <img class="img-thumbnail" src="@LastArticle3.ImageMin" />
+                </div>
+                <div class="col-2" style="font-size: 13px;margin-top: 30px;">
+                    <div class="row"><a style="color:black;" href="/Articles/Article?id=@LastArticle3.ID"><b>@LastArticle3.Header</b></a></div>
+                    <div class="row " style="margin-top:5px">
+                        <div class="col-auto" style="background-color: slateblue;"><a style="color:black;" href="/Account/UserProfil?name=@LastArticle3.Creator">@LastArticle3.Name</a></div>
+                        <div class="col-auto" id="Time" style="background-color: green;">@LastArticle3.Time</div>
+                        <div class="col-auto" style="background-color: red; ">@LastArticle3.Viev</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col">
+            <div class="row border-bottom">
+                <div class=" col Comments-Head ">
+                    Коментарии <span class="Comments-Counter Counter ">@CommentCounter</span>
+                </div>
+            </div>
+            <div class="CommentPH">
+                @TagBuilders.BuildCommentList(Model.ID, Context.User)
+            </div>
+        </div>
+    </div>
+    <div id="IsAuthenticated">
+        <div class="row" style=" border-top:1px solid black;">
+            <div class="col-10 " style="margin-top: 20px;">
+                <textarea maxlength="1000" placeholder="Написать коментарий"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-image fa-2x"></i>
+                        <input type="file" multiple accept="image/*" style=" opacity: 0;transform: translate(205px,-1000px);" />
+                    </div>
+                    <div class="col-3">
+                        <div class="progress" id="pBar">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <span id="textCounter">0</span>/1000
+                    </div>
+                    <div class="col-2 text-right">
+                        <button class="btn send btn-success ">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row border text-center " id="FalseAuth" style="display:none;">
+        <div class="col-12" style="margin-top: 30px;">
+            <span class="fa fa-warning fa-2x"> </span><txt1 style="font-size:16px;">Коментарии доступны только для авторизованных пользователей!</txt1>
+        </div>
+    </div>
+</div>
+
+<script>
+    if ("@User.Identity.IsAuthenticated" === "False")
+        {
+        $("#IsAuthenticated").css("display", 'none');
+        $("#FalseAuth").css('display', 'flex');
+    }
+</script>
+<script src="~/js/Article/Article.js"></script>
+

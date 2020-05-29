@@ -1,0 +1,69 @@
+﻿@model WebServer.Models.MessageViewModel
+@{
+    ViewData["Title"] = Model.Header;
+
+    int action;
+    if (Model.Mark == true)
+    {
+        action=1;
+    }
+    else
+    {
+        action = 0;
+    }
+}
+<link rel="stylesheet" href="~/css/Messages/MessageView.css" />
+<div class="container ">
+    <div class="row nav menu text-center " style="width: 58%;">
+        <div class="col-auto " style="padding:10px;">
+            @{ 
+                if (Model.Mark == true) {<button class="btn fa fa-star">  Из Избранного</button>}
+                else { <button class="btn fa fa-star">  В Избранное </button>}
+            }
+
+            <button class="btn fa fa-trash-o">  Удалить </button>
+            <button class="btn fa fa-reply">  Ответить </button>
+            <a class="fa fa-arrow-left"href="/Messages/Message?actionstate=@Model.action" style="background-color: gray; color:black; ">  Назад </a>
+        </div>
+        <div class="col-auto sender">
+            От:
+            @if (@VirtualBD.Users.Find(x => x.Email == Model.Name) != null)
+            {
+                <a href="/Account/UserProfil?name=@Model.Name" style="color:black;">  <img style="max-width: 35px;" src="@VirtualBD.Users.Find(x => x.Email == Model.Name).Image"> @VirtualBD.Users.Find(x => x.Email == Model.Name).Name</a>
+            }
+            else
+            {
+        <span>@Model.Name</span>
+            }
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>   @Model.Header</h4>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col MessageBody" style="  "> @Model.Text</div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <img style="margin-left: 50px;" src="@Model.Image" />
+        </div>
+    </div>
+</div>
+
+<script>
+   $.post("/Messages/Viewed", { 'id':@Model.ID, 'action': '0' });
+$(".fa-star").click(function () {
+    $.post("/Messages/Mark", { 'id': '@Model.ID', 'action': '@action' });
+});
+$(".fa-trash-o").click(function () {
+    $.post("/Messages/Delete", { 'id': '@Model.ID' });
+    window.location.href = "/Messages/Message?actionstate=0";
+});
+$(".fa-reply").click(function () { window.location.href = "/Messages/Message?actionstate=2&Email=@Model.Name"; });
+</script>

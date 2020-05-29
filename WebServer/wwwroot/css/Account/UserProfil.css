@@ -1,0 +1,14 @@
+﻿#UserImg {
+    max-width: 220px;
+    margin: 10px;
+}
+
+#MainBox {
+    margin-left: 10px;
+    background-color: #795FE7;
+    color: whitesmoke;
+}
+
+#pBar {
+    display: none;
+}

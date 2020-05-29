@@ -1,0 +1,257 @@
+﻿@model (int,string)
+@{
+    ViewData["Title"] = "Сообщения";
+
+    string send="",received="",New="",ActiveTab1 = "", ActiveTab2 = "", ActiveTab3 = "";
+    switch(Model.Item1)
+    {
+        case 0:send = "show active"; ActiveTab1 = "active"; break;
+        case 1: received = "show active"; ActiveTab2 = "active"; break;
+        case 2: New = "show active"; ActiveTab3 = "active"; break;
+    }
+    }
+<link rel="stylesheet" href="~/css/Messages/Message.css" />
+    <div class="container">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-11"
+                 style="border: 2px outset black; border-radius: 20px;">
+                <div class="row">
+                    <div class="col" style="font-size: 20px;">
+                        <b>Сообщения </b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link @ActiveTab1" id="nav-sent-tab" data-toggle="tab" href="#nav-sent" role="tab" aria-controls="nav-sent" aria-selected="true">Полученые</a>
+                                <a class="nav-item nav-link @ActiveTab2" id="nav-received-tab" data-toggle="tab" href="#nav-received" role="tab" aria-controls="nav-received" aria-selected="false">Отправленые</a>
+                                <a class="nav-item nav-link @ActiveTab3" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="false">Написать</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade @send" id="nav-sent" role="tabpanel" aria-labelledby="nav-sent-tab">
+                                <div class="row" style="border-top: 1px solid black;"></div>
+                                <div class="row"
+                                     style="margin-top: 10px; margin-bottom: 10px;">
+                                    <div class="col-1" style="margin-top: 6px;">Фильтр:</div>
+
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">За статусом</button>
+                                        <div class="dropdown-menu">
+                                            <div class="submenuitem all" style="background-color: yellow;">
+                                                <txt style="margin-left: 10px;">Все</txt>
+                                            </div>
+                                            <div class="submenuitem read">
+                                                <txt style="margin-left: 10px;"> Прочитаные</txt>
+                                            </div>
+                                            <div class="submenuitem notread">
+                                                <txt style="margin-left: 10px;">Не прочитаные</txt>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <button class="btn sortE fa fa-sort " style="background-color: aqua; transform:scale(1.3);margin-top: 4px;"></button>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <button id="SearchButton1" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
+                                            </div>
+                                            <div class="col-7">
+                                                <input id="SearchArea1" class="form-control mr-sm-2 col" type="search" placeholder="Поиск" aria-label="Search" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn fa fa-navicon " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 6px; margin-left: 55px;"></button>
+                                        <div class="dropdown-menu">
+                                            <div class="submenuitem favorites" style="background-color: yellow;">
+                                                <txt style="margin-left: 10px;">В избранное</txt>
+                                            </div>
+                                            <div class="submenuitem delfromfavorites" style="background-color: rgb(75, 78, 221);">
+                                                <txt style="margin-left: 10px;">Из избранного</txt>
+                                            </div>
+                                            <div class="submenuitem delete" style="background-color: red;">
+                                                <txt style="margin-left: 10px;">Удалить</txt>
+                                            </div>
+                                            <div class="submenuitem readed" style="background-color: greenyellow;">
+                                                <txt style="margin-left: 10px;">Прочитаное</txt>
+                                            </div>
+                                            <div class="submenuitem notreaded">
+                                                <txt style="margin-left: 10px;">Не прочитаное</txt>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table tableE table-bordered table-sm table-dark table-striped table-hover">
+                                        <tbody>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Статус</th>
+                                                <th scope="col">Время</th>
+                                                <th scope="col">Отправитель</th>
+                                                <th scope="col">Главление</th>
+                                                <th scope="col">Отметить</th>
+                                            </tr>
+                                        </thead>
+                                        <col width="111" />
+                                        <col width="110" />
+                                        <col width="80" />
+                                        <col width="189" />
+                                        <col width="20" />
+                                                                               
+                                        @TagBuilders.BuildMessages(User,"Send")
+                                     
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade @received" id="nav-received" role="tabpanel" aria-labelledby="nav-received-tab">
+                                <div class="row" style="border-top: 1px solid black;"></div>
+                                <div class="row"
+                                     style="margin-top: 10px; margin-bottom: 10px;">
+                                    <div class="col-1" style="margin-top: 6px;">Фильтр:</div>
+
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">За статусом</button>
+                                        <div class="dropdown-menu">
+                                            <div class="submenuitem all2" style="background-color: yellow;">
+                                                <txt style="margin-left: 10px;">Все</txt>
+                                            </div>
+                                            <div class="submenuitem read2">
+                                                <txt style="margin-left: 10px;"> Прочитаные</txt>
+                                            </div>
+                                            <div class="submenuitem notread2">
+                                                <txt style="margin-left: 10px;">Не прочитаные</txt>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <button class="btn sortS fa fa-sort " style="background-color: aqua; transform:scale(1.3);margin-top: 4px;"></button>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <button id="SearchButton2" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
+                                            </div>
+                                            <div class="col-7">
+                                                <input id="SearchArea2" class="form-control mr-sm-2 col" type="search" placeholder="Поиск" aria-label="Search" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn fa fa-navicon " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 6px; margin-left: 55px;"></button>
+                                        <div class="dropdown-menu">
+                                            <div class="submenuitem favorites2" style="background-color: yellow;">
+                                                <txt style="margin-left: 10px;">В избранное</txt>
+                                            </div>
+                                            <div class="submenuitem delfromfavorites2" style="background-color: rgb(75, 78, 221);">
+                                                <txt style="margin-left: 10px;">Из избранного</txt>
+                                            </div>
+                                            <div class="submenuitem delete2" style="background-color: red;">
+                                                <txt style="margin-left: 10px;">Удалить</txt>
+                                            </div>
+                                            <div class="submenuitem readed2" style="background-color: greenyellow;">
+                                                <txt style="margin-left: 10px;">Прочитаное</txt>
+                                            </div>
+                                            <div class="submenuitem notreaded2">
+                                                <txt style="margin-left: 10px;">Не прочитаное</txt>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table tableS table-bordered table-sm thead-light table-striped table-hover">
+                                        <tbody>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Статус</th>
+                                                <th scope="col">Время</th>
+                                                <th scope="col">Получатель</th>
+                                                <th scope="col">Главление</th>
+                                                <th scope="col">Отметить</th>
+                                            </tr>
+                                        </thead>
+                                        <col width="111" />
+                                        <col width="110" />
+                                        <col width="80" />
+                                        <col width="189" />
+                                        <col width="20" />
+                                        
+                                            @TagBuilders.BuildMessages(User,"Resive")
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade @New" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
+                                <div class="row" style="border-top: 1px solid black;"></div>
+                                @{
+                                    if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <div class="row" style="margin-top: 5px;">
+                                            <div class="col-auto" style="margin-top: 5px;"> <input id="Who" type="text" placeholder="Представтесь!" /></div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="row" style="margin-top: 5px;">
+                                            <div class="col-auto" style="margin-top: 5px;"> <input id="addressee" type="text" value="@Model.Item2" placeholder="Кому" /></div>
+                                            <a href="/Home/UsersList" class="col-auto"> <button class="btn btn-primary">Список пользователей</button></a>
+                                        </div>
+                                    }
+                                }
+
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-4">
+                                        <input type="text" style="width: 100%;" id="HeaderInp" placeholder="Тема">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col" style="margin-top: 20px;">
+                                        <textarea style="width: 100%; height: 160px; overflow: visible;" maxlength="1000" placeholder="Написать Сообщение"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <i class="fa fa-image fa-2x"></i>
+                                                <input id="uploadImage" type="file" multipleaccept="image/*" style="opacity: 0;transform: translate(205px, -1000px);" />
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="progress" id="pBar">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span id="textCounter">0</span>/1000
+                                            </div>
+                                            <div class="col-2 text-right">
+                                                <button class="btn sendbtn btn-success"> Отправить</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/Messages/Message.js"></script>
+
+

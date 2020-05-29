@@ -1,0 +1,307 @@
+﻿@{
+    ViewData["Title"] = "О себе";
+}
+<link rel="stylesheet" href="/css/Home/aboutmy.css" />
+<div class="container-fluid" style="background-color:#E1E43A;">
+    <div class="row" style="height: 400px;">
+        <div class="col">
+
+        </div>
+        <div class="col-7 " style="background-color: white; ">
+            <div class="row">
+                <div class="col-6 ">
+                    <div class="row" style="transform: translateX(480px);display: flex; ">
+                        <div class="col">
+
+                            <div class="row">
+                                <div class="col">
+                                    <h4 id="HeaderHead">
+                                        <b>
+                                            Коротко обо мне
+                                        </b>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="row Header_Ellement text-right" style=" background: linear-gradient(to left, #CDE400,#98E43A, #1BE43C);  border-color: #98E43A;">
+                                <div class="col">
+                                    <div class="row Header_Ellement_body" id="Ellement1">
+                                        <div class="col"> <b class="Header_About_Text">Мои навыки</b> </div>
+                                        <div class="col text-right">   <img src="/Img/arrow.png" class="Header_About_Img"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row Header_Ellement text-right" style=" background: linear-gradient(to left, #3544E2,#9A47E2, #DB28E4);  border-color: #9A47E2;">
+                                <div class="col">
+                                    <div class="row Header_Ellement_body" id="Ellement2">
+                                        <div class="col"><b class="Header_About_Text">Мои работы</b> </div>
+                                        <div class="col  text-right"> <img src="/Img/arrow.png" class="Header_About_Img"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row Header_Ellement text-right" style=" background: linear-gradient(to left, #E2BB0D,#E28D54, #E23B12);  border-color: #E28D54;">
+                                <div class="col">
+                                    <div class="row Header_Ellement_body" id="Ellement3">
+                                        <div class="col"><b class="Header_About_Text">Об мне</b></div>
+                                        <div class="col  text-right">  <img src="/Img/arrow.png" class="Header_About_Img"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-auto text-center" style="transform: translateX(300px);">
+                    <div class="row">
+                        <div class="col">
+
+                            <h5 id="HeaderContact">
+                                Контакты
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+
+                            <a href="/Home/MyContact">  <span class="fa fa-newspaper-o ContactIcon" style="margin-top: 40px;margin-left: 13px;" data-toggle="tooltip" data-placement="right" title="Страница: 'Контакты' на сайте"> </span></a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <a href="/Messages/Message?actionstate=2">  <span class="fa fa-envelope ContactIcon" data-toggle="tooltip" data-placement="right" title="Форма связи на сайте"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <a href="https://t.me/PunkRoy"> <span class="fa fa-send ContactIcon" data-toggle="tooltip" data-placement="right" title="Я в телеграм"></span></a>
+                        </div>
+                    </div>
+
+                </div>
+                <img id="HeadPhoto" src="/Img/HeadPhoto.png">
+            </div>
+
+            <div id="EndLine"> </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="container-fluid ">
+    <div class="row" id="Body">
+        <div class="col text-center" id="Start_Body">
+            Короткое резюме
+        </div>
+        <div class="col">
+            <div class="row" id="Skill_Body">
+                <div class="col-4">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <h5 style="margin-left:70px;">Языки програмирования</h5>
+                            <div id="Line_Horizontal"></div>
+                        </div>
+                    </div>
+
+                    <div class="row Skill_Ellement">
+                        <div class="col-2">
+                            C#
+                        </div>
+                        <div class="col Skill_Ellement_Sub">
+                            Отлично знаком, и часто использую. Имею большой опыт роботы с разными фреймворками для платформы .NET. Основной ЯП.
+                        </div>
+                    </div>
+
+                    <div class="row Skill_Ellement">
+                        <div class="col-2">
+                            С++
+                        </div>
+                        <div class="col Skill_Ellement_Sub">
+                            Хорошо знаком. Розрабатывал пару проэктов с помощью библиотеки SFML.
+                        </div>
+                    </div>
+
+                    <div class="row Skill_Ellement">
+                        <div class="col-2">
+                            JavaScript
+                        </div>
+                        <div class="col Skill_Ellement_Sub">
+                            Хорошо знаком, часто использую. В основном использую библиотеку jquery.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <h5 style="margin-left:70px;">Платформы</h5>
+                            <div id="Line_Horizontal"></div>
+                        </div>
+                        <div class="row Skill_Ellement">
+                            <div class="col-2">
+                                .NET Framework
+                            </div>
+                            <div class="col Skill_Ellement_Sub">
+                                Познакомился с платформой .NET еще в университете работая с WinForm на C++ и слежу за обновлениями и новыми фичами досихпор.
+                            </div>
+                        </div>
+
+                        <div class="row Skill_Ellement">
+                            <div class="col-2">
+                                .NET Core
+                            </div>
+                            <div class="col Skill_Ellement_Sub">
+                                Познакомился в 2017 году и все новые проекты стараюсь делать на .NET Core.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <h5 style="margin-left:70px;">Фреймворки</h5>
+                            <div id="Line_Horizontal"></div>
+                        </div>
+
+                        <div class="row Skill_Ellement">
+                            <div class="col-2">
+                                ASP.NET
+                            </div>
+                            <div class="col Skill_Ellement_Sub">
+                                Имею не большой но продуктивный опыт создания веб-приложений на ASP.NET (данный сайт появился как полигон для теста новых возможносте и дальнейшая переработка в полноценное веб-приложение)
+                            </div>
+                        </div>
+                        <div class="row Skill_Ellement">
+                            <div class="col-2">
+                                Entity Framework
+                            </div>
+                            <div class="col Skill_Ellement_Sub">
+                                Часто использую для приложений где  не нужно работать с большими объемами данных и нет сложных запросов к БД.
+                            </div>
+                        </div>
+                        <div class="row Skill_Ellement">
+                            <div class="col-2">
+                                Xmarine
+                            </div>
+                            <div class="col Skill_Ellement_Sub">
+                                Занимался розработкой бизнес-логики приложений и тестированием готовых.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="Project_Body">
+                <div class="col-7">
+
+                    <div class="row">
+                        <div class="col">
+                            <h3 id="Project_Header">Transport AndroidApp</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-auto Project_Img ">
+                            <img src="/Img/Screenshot_20200504-194112_Transport.png" style="width: 300px; height :480px; border: 1px solid black;">
+
+                        </div>
+                        <div class="col-auto Project_Img">
+                            <img src="/Img/Transport 2.png" style="width: 300px; height :480px; border: 1px solid black;">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" id="Project_1_Text">
+                            Приложение показывает когда прибудет на остановку ближайший городской транспорт города Переяслав, а так же показывает маршруты каждого рейса и выводит расписание .
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col">
+                            <h3 id="Project_Header">
+                                Этот сайт
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col Project_Img ">
+                            <img src="/Img/PHM.png" style="max-width: 480px;border: 1px solid black;">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" id="Project_2_Text">
+                            Сайт был создан как полигон для упражнений в разработке веб-приложений на .NET Framework, а потом и .NET CORE и верстки с помощью Bootstrap 4. Но потом появилась идея сделать простой путеводитель по моему родному городу. На сайте собраны все самые интересные места в городе и самые главные инфраструктурные объекты.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" id="About_Body">
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h5>Мои увлечения</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            У меня много увлечений как связанных как с активным образом жизни, но я так же знаю как
+                            развлечь себя в условиях дома/квартиры. В основном это чтение художественной литературы и научных статей просмотр фильмов/сериалов, видео игры но больше всего люблю музыку .
+                            Когда устаю от домоседста устраиваю пешие или велопрогулки по городу или еду на рыбалку или на прогулку в лес.
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h5>Почему именно IT?</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Тут все просто. Программирование самый простой просто вид творчества, который не требует особых навыков моторики, легко найти единомышленников и обучающие курсы. Но самое главное отличие от других творческих занятий это то что ты можешь увидеть результат
+                            своей роботы практически сразу как изучил что то новое. Нарисовать вменяемую картину не так то и просто, а реализовать алгоритм сортировки массива не требует много времени и большого комплекса знаний. Так все и началось сделал что то
+                            увидел результат и сразу получил мотивацию изучать дальше и расти профессионально.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h5>Остальное</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="">
+                            <span style="display:flex; margin-top: 4px;">Родной язык украинский, отлично знаю Русский и знаю Английский на уровне простого разговора и чтения технической документации.</span> <br />
+                            <span style="display:flex; margin-top: 4px;"> Учусь в национального авиационном университете на заочной форме.</span> <br />
+                            <span style="display:flex; margin-top: 4px;"> Живу в Киеве на съемных квартирах или в Переяславе.</span> <br />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="/js/Home/about.js"></script>

@@ -1,0 +1,13 @@
+﻿
+.submenuitem {
+    background-color: grey;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+#UserImg {
+    padding-right:15px;
+    max-width: 70px;
+}
+.fa-envelope-o{
+    color:whitesmoke;
+}

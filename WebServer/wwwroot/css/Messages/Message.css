@@ -1,0 +1,13 @@
+﻿#pBar {
+    transform: translate(-30px,7px);
+    display: none;
+}
+
+.submenuitem {
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

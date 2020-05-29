@@ -1,0 +1,108 @@
+﻿@{
+    string SRC;
+    if (VirtualBD.Users.Find(x => x.Email == User.Identity.Name) != null)
+        SRC = VirtualBD.Users.Find(x => x.Email == User.Identity.Name).Image;
+    else SRC = "";
+
+    int Unread = await MessageManager.UnreadMessage(User.Identity.Name);
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1920, initial-scale=1.0, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - PHMexplorer</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light" style="background:linear-gradient(to right,yellow,aliceblue);">
+            <div class="navbar-header">
+                <img src="~/Img/Pereyaslav.png" style="max-width:80px ;">
+            </div>
+            <div class=" container-fluid" id="navbarSupportedContent">
+                <ul class="nav nav-pils mr-auto br-light">
+                    <li class="nav-item OverlayBtn active">
+                        <a class="nav-link fa fa-home fa-2x" href="/Home/Index">Главная </a>
+                        <div class="nav-border"></div>
+                    </li>
+                    <li class="nav-item OverlayBtn">
+                        <a class="nav-link fa fa-exclamation-triangle fa-2x" href="/Home/about">О себе</a>
+                        <div class="nav-border"></div>
+                    </li>
+                    <li class="nav-item OverlayBtn">
+                        <a class="nav-link fa fa-question-circle fa-2x" href="/Home/MyContact">Контакты</a>
+                        <div class="nav-border"></div>
+                    </li>
+                    <li class="nav-item OverlayBtn">
+                        <a class="nav-link fa fa-list-alt fa-2x" href="/Home/UsersList">Список пользователей</a>
+                        <div class="nav-border"></div>
+                    </li>
+                    @{
+                        if (User.IsInRole("Admin"))
+                        {
+                                        <li class="nav-item OverlayBtn">
+                                            <a class="nav-link fa fa-file-text fa-2x" href="/Articles/AddArticle"> Добавить статью</a>
+                                            <div class="nav-border"></div>
+                                        </li>
+                        }
+                    }
+
+                </ul>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="nav OverlayUserBar navbar-right">
+                    <div class="col-12">
+                        <div class=" nav-tabs ">
+                            <a class=" nav nav-link fa fa-sign-in" style="color:gold;margin:3px; " asp-controller="Account" asp-action="Authorization">Авторизация </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row OverlayUserBar text-right" >
+                    <div class="col-4 " style="margin-top: 7px;">
+                        <img c src="@SRC" style="max-width:70px; padding: 10px;">
+                    </div>
+                    <div class="col-8" style="margin-top: 7px;">
+                        <ul class="nav  nav-stacked" style="color:gold; font-size:20px;">
+                            <li> <a style=" color:gold;" asp-controller="Account" asp-action="UserProfil" asp-route-name="@User.Identity.Name">@User.Identity.Name</a></li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-auto"><a style="color:gold;" class="fa fa-sign-out" asp-controller="Account" asp-action="Logout"> Выйти</a></div>
+                                    <div class="col-auto">
+                                        @{ if (Unread > 0)
+                                            {<a href="/Messages/Message?actionstate=0"><span class="fa fa-envelope" style="color:red">  @Unread</span></a>}
+                                        else
+                                        {<a href="/Messages/Message?actionstate=0"><span class="fa fa-envelope" style="color:yellow"></span></a> }
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+   <script src="~/js/Layout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
