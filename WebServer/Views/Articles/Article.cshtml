@@ -95,7 +95,9 @@
                 </div>
             </div>
             <div class="CommentPH">
-                @TagBuilders.BuildCommentList(Model.ID, Context.User)
+                @{
+                    WebServer.TagBuilders.BuildCommentList(Model.ID,User);
+                }
             </div>
         </div>
     </div>

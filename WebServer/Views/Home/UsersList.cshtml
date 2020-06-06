@@ -1,47 +1,84 @@
 ﻿
 @{
     ViewData["Title"] = "Список пользователей";
-   
+
 }
 <script src="~/js/Home/UserList.js"></script>
 <link rel="stylesheet" href="~/css/Home/UserList.css" />
-    <div class="container">
-        <div class="row" style="background:linear-gradient(to right,red,yellow);  padding: 10px;">
-            <div class=" col-8 btn-group">
-                <div>
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Фильтр </button>
-                    <div class="dropdown-menu">
-                        <div class="submenuitem" id="item1">
-                            <txt style="margin-left: 20px;">Все</txt>
-                        </div>
-                        <div class="submenuitem" id="item2">
-                            <txt style="margin-left: 20px;">Все активные</txt>
-                        </div>
-                        <div class="submenuitem" id="item3">
-                            <txt style="margin-left: 20px;">Все не всети</txt>
-                        </div>
+<div class="container">
+    <div class="row" style="background:linear-gradient(to right,red,yellow);  padding: 10px;">
+        <div class=" col-8 btn-group">
+            <div>
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Фильтр </button>
+                <div class="dropdown-menu">
+                    <div class="submenuitem" id="item1">
+                        <txt style="margin-left: 20px;">Все</txt>
+                    </div>
+                    <div class="submenuitem" id="item2">
+                        <txt style="margin-left: 20px;">Все активные</txt>
+                    </div>
+                    <div class="submenuitem" id="item3">
+                        <txt style="margin-left: 20px;">Все не всети</txt>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <input class="form-control mr-sm-2 col" type="search" placeholder="Search" aria-label="Search">
-                <button id="SearchButton" class="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </div>
         </div>
-
-        <table class="table  table-dark table-striped  table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Аватар </th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Статус</th>
-                </tr>
-            </thead>
-            <tbody>
-                @await TagBuilders.BuildUsersList(User)
-            </tbody>
-        </table>
+        <div class="row">
+            <input class="form-control mr-sm-2 col" type="search" placeholder="Search" aria-label="Search">
+            <button id="SearchButton" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        </div>
     </div>
+
+    <table class="table  table-dark table-striped  table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Аватар </th>
+                <th scope="col">Имя</th>
+                <th scope="col">Email</th>
+                <th scope="col">Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ (string, string) setStatus(string name)
+                {
+                    (string status, string statusClass) statusparam = (status: "/Img/ofline.png", statusClass: "ofline");
+                    foreach (session user in isOnlain.OnlineUser)
+                    {
+                        if (user.name == name)
+                        {
+                            statusparam.status = "/Img/online.png";
+                            statusparam.statusClass = "online";
+                            break;
+                        }
+                    }
+                    return statusparam;
+                }
+                string Delete = "";
+                (string status, string statusClass) statusparam;
+
+                for (int i = 0; i < VirtualBD.Users.Count; i++)
+                {
+                    if (User.IsInRole(Role.Admin))
+                        Delete = $"<div > <text class=\"del\" style=\"color:blue;\"  id=\"{VirtualBD.Users[i].Email}\" href=\"/Account/deleteUser\">Удалить</text></div>";
+
+                    statusparam = setStatus(VirtualBD.Users[i].Email);
+
+                    <tr class="tableitem @statusparam.statusClass ">
+                        <th scope="row">@i + 1</th>
+                        <th><img src="@VirtualBD.Users[i].Image" id="UserImg"></th>
+                        <td> <a href="/Account/UserProfil?name=@VirtualBD.Users[i].Email">@VirtualBD.Users[i].Name</a> @Delete</td>
+                        <td>
+                            <div class="row">@VirtualBD.Users[i].Email </div>
+                            <div class="row">
+                                <a class="fa fa-envelope-o" href="/Messages/Message?actionstate=2&Email=@VirtualBD.Users[i].Email"> Написать</a>
+                            </div>
+                        </td>
+                        <td> <img style="transform:translateX(-15px); " src="@statusparam.status"> </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 

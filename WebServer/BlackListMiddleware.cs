@@ -16,14 +16,7 @@ namespace WebServer
             this._next = next;
         }
         public async Task InvokeAsync(HttpContext context)
-        {    
-
-            WebRequest request = WebRequest.Create("https://pereiaslav.city/read/rayon/42836/gajshin-iz-soloncyami-znovu-pominyalisya-miscyami-pislya-chergovogo-turu-chempionatu");
-            request.Method = "DELETE";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            int a = 0;
+        {             
             for (int i=0;i<BlackList.list.Count;i++)
                 if (BlackList.list[i].IP == context.Connection.RemoteIpAddress.ToString())
                 {

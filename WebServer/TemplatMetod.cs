@@ -77,7 +77,7 @@ namespace WebServer
         {
             try
             {
-                Bitmap b1 = new Bitmap(_appEnvironment.WebRootPath + InPatch);
+            Bitmap b1 = new Bitmap(_appEnvironment.WebRootPath + InPatch);
             Bitmap b2 = new Bitmap(b1, new Size(440, 240));
             ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
            var myEncoder = Encoder.Quality;
@@ -109,5 +109,6 @@ namespace WebServer
             }
             return item;
         }
+      
     }
 }

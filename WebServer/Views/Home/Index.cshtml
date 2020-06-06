@@ -3,95 +3,153 @@
 }
 <link rel="stylesheet" href="~/css/Home/Index.css" />
 
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="table-responsive-lg">
-                    <table class="table  table-sm   table-hover">
-                        <tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col">@DateTime.Now.ToString("D")</th>
-                                <th scope="col">
-                                    <div class="pos-f-t" style="border:1px solid black;">
-                                        <div class="collapse" id="navbarToggleExternalContent">
-                                            <div class=" p-4">
-                                                <div class="row">
-                                                    <input class="form-control mr-sm-2 col" type="search" placeholder="Поиск" aria-label="Search">
-                                                    <button id="SearchButton" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
-                                                </div><!--Поиск-->
-                                                <div class="row" style="margin-top: 10px;">
-                                                    <div class="col-auto">
-                                                        <button class="btn btn-warning Time" type="button" id="NewFirst">Сначало новые </button>
-                                                    </div><!--Сортировка по времени-->
-                                                    <div class="col-auto" style="margin-left:40px;">
-                                                        <button style="margin-left:80px;" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">За классом </button>
-                                                        <div class="dropdown-menu">
-                                                            <div class="submenuitemClass " id="none">
-                                                                <txt style="margin-left: 20px;">Сбросить</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="Market">
-                                                                <txt style="margin-left: 20px;">Продуктовые супермаркеты</txt>
-                                                            </div>
-
-                                                            <div class="submenuitemClass " id="Shop">
-                                                                <txt style="margin-left: 20px; ">Магазины</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="Restaurants">
-                                                                <txt style="margin-left: 20px;">Рестораны</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="Cafe">
-                                                                <txt style="margin-left: 20px;">Кафе</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="EducationalInstitutions">
-                                                                <txt style="margin-left: 20px;">Образовательные учреждения</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="ConstructionShops">
-                                                                <txt style="margin-left: 20px;">Строительные магазины</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="Museums">
-                                                                <txt style="margin-left: 20px;">Музеи</txt>
-                                                            </div>
-                                                            <div class="submenuitemClass " id="SityBilding">
-                                                                <txt style="margin-left: 20px;">Городская инфраструктура</txt>
-                                                            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="table-responsive-lg">
+                <table class="table  table-sm   table-hover">
+                    <tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">@DateTime.Now.ToString("D")</th>
+                            <th scope="col">
+                                <div class="pos-f-t" style="border:1px solid black;">
+                                    <div class="collapse" id="navbarToggleExternalContent">
+                                        <div class=" p-4">
+                                            <div class="row">
+                                                <input class="form-control mr-sm-2 col" type="search" placeholder="Поиск" aria-label="Search">
+                                                <button id="SearchButton" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
+                                            </div><!--Поиск-->
+                                            <div class="row" style="margin-top: 10px;">
+                                                <div class="col-auto">
+                                                    <button class="btn btn-warning Time" type="button" id="NewFirst">Сначало новые </button>
+                                                </div><!--Сортировка по времени-->
+                                                <div class="col-auto" style="margin-left:40px;">
+                                                    <button style="margin-left:80px;" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">За классом </button>
+                                                    <div class="dropdown-menu">
+                                                        <div class="submenuitemClass " id="none">
+                                                            <txt style="margin-left: 20px;">Сбросить</txt>
                                                         </div>
-                                                    </div><!--Фильтр-->
-                                                </div>
+                                                        <div class="submenuitemClass " id="Market">
+                                                            <txt style="margin-left: 20px;">Продуктовые супермаркеты</txt>
+                                                        </div>
+
+                                                        <div class="submenuitemClass " id="Shop">
+                                                            <txt style="margin-left: 20px; ">Магазины</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="Restaurants">
+                                                            <txt style="margin-left: 20px;">Рестораны</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="Cafe">
+                                                            <txt style="margin-left: 20px;">Кафе</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="EducationalInstitutions">
+                                                            <txt style="margin-left: 20px;">Образовательные учреждения</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="ConstructionShops">
+                                                            <txt style="margin-left: 20px;">Строительные магазины</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="Museums">
+                                                            <txt style="margin-left: 20px;">Музеи</txt>
+                                                        </div>
+                                                        <div class="submenuitemClass " id="SityBilding">
+                                                            <txt style="margin-left: 20px;">Городская инфраструктура</txt>
+                                                        </div>
+                                                    </div>
+                                                </div><!--Фильтр-->
                                             </div>
-                                        </div><!--Динамичная панель-->
-                                        <div class="text-center">
-                                            <button class="navbar-toggler fa fa-navicon" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" style="max-height: 30px; justify-content: center;" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                            </button>
-                                        </div><!--Кнопка управления панелью-->
+                                        </div>
+                                    </div><!--Динамичная панель-->
+                                    <div class="text-center">
+                                        <button class="navbar-toggler fa fa-navicon" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" style="max-height: 30px; justify-content: center;" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        </button>
+                                    </div><!--Кнопка управления панелью-->
+                                </div>
+                            </th>
+                        </tr>
+                    </thead><!--Верхняя панель-->
+                    <col width="150">
+                    <col width="450">
+                    @{
+                        string Delete = "";
+
+                        foreach (var obj in VirtualBD.Articles)
+                        {
+                            if (User.IsInRole(Role.Admin) || User.Identity.Name == obj.Creator)
+                                Delete = $"<div class=\"col text-right\"> <text class=\"del\"style=\"color:blue;\"  id=\"{obj.ID}\" href=\"/Articles/deleteArticle\">Удалить</text></div>";
+
+                            <tr class="tableitem" id="@obj.ID">
+                                <th class="@obj.Type">
+                                    <a href="/Articles/Article?id=@obj.ID"> <img src="obj.ImageMin" width="220" height="120" /> </a>
+                                </th>
+                                <th>
+                                    <div class="row">
+                                        <a href="/Articles/Article?id=@obj.ID"> <b style="font-size:18px; ">@obj.Header </b> </a>
+                                    </div>
+                                    <div class="row" style="margin-top:15px">
+                                        <a style="color:black;" href="/Account/UserProfil?name=@obj.Creator">
+                                            <div class="col-auto" style="background-color: slateblue;">@obj.Name</div>
+                                        </a>
+                                        <div class="col-auto" id="Time" style="background-color: green;">@obj.Time </div>
+                                        <div class="col-2 " style="background-color: red;">
+                                            <txt class="fa fa-eye">@obj.Viev</txt>
+                                        </div> <div class="col-2 " style="background-color: red;">
+                                            <txt class="fa fa-comments">@VirtualBD.Comments.FindAll(x => x.articleID == obj.ID).Count</txt>
+                                        </div> @Delete
+                                    </div>
+                                    <div class="row " style="margin-top:10px">@{new TemplateMetod().Translete(obj.Type);}</div>
+                                </th>
+                            </tr>
+                        }
+
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="table-responsive-lg">
+                <table class="table Event table-hover">
+                    <tbody>
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col" class="EventHeader">События <button style="transform: translate(115px,15px);" class="btn CloseBtn fa fa-close "> </button> </th>
+                        </tr>
+                    </thead>
+                    @{
+                        int count = 0;
+
+                        for (int i = VirtualBD.Events.Count; i > 0; i--)
+                        {
+                            <tr class="eventEllement">
+                                <th>
+                                    <div style="margin-top:15px;" class="row border-bottom">
+                                        <div class="col text-center">
+                                            <div style="font-size: 20px;"> <b> @VirtualBD.Events[i - 1].EventType  </b>  </div>
+                                            <div style="transform: translate(-20px,1px); "> @VirtualBD.Events[i - 1].Time</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="/Account/UserProfil?name=@VirtualBD.Events[i - 1].Name">{VirtualBD.Events[i - 1].UserName}:</a>
+                                            @VirtualBD.Events[i - 1].messege
+                                        </div>
                                     </div>
                                 </th>
                             </tr>
-                        </thead><!--Верхняя панель-->
-                        <col width="150">
-                        <col width="450">
-                        @await TagBuilders.BuildArticlesList(User)
-                        </tbody>
-                    </table>
-                </div>
-                </div>
-            <div class="col-4">
-                <div class="table-responsive-lg">
-                    <table class="table Event table-hover">
-                        <tbody>
-                        <thead>
-                            <tr class="text-center">
-                                <th scope="col" class="EventHeader">События <button style="transform: translate(115px,15px);" class="btn CloseBtn fa fa-close "> </button> </th>
-                            </tr>
-                        </thead>
-                        @await TagBuilders.BuildEvent()
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col text-center">
-                    <button class="btn OpenBtn fa fa-chevron-circle-down " style="display: none;"> </button>
-                </div>
-            </div> <!-- Cобытия-->
+                            if (count == 5)
+                                break;
+                            count++;
+                        }
+
+                    }                 
+                    </tbody>
+                </table>
             </div>
+            <div class="col text-center">
+                <button class="btn OpenBtn fa fa-chevron-circle-down " style="display: none;"> </button>
+            </div>
+        </div> <!-- Cобытия-->
     </div>
-    <script src="~/js/Home/Index.js"></script>
+</div>
+<script src="~/js/Home/Index.js"></script>
